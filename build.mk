@@ -1,0 +1,7 @@
+BASE_DIR := /Users/wuzuyang/Works/libave
+LIBS_DIR := $(BASE_DIR)/libs
+
+TARGET_ARCH=x86
+
+CFLAGS := -I $(BASE_DIR) -I $(BASE_DIR)/webrtc
+CFLAGS += -D WEBRTC_MAC -D WEBRTC_CLOCK_TYPE_REALTIME
