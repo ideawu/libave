@@ -1,6 +1,6 @@
 include $(ROOT)/build.mk
 
-OUT_LIB := $(LIBS_DIR)/libwebrtc_spl.a
+OUT_LIB := $(DIST_LIB_DIR)/libwebrtc_system_wrappers.a
 LOCAL_SRC_FILES := \
     map.cc \
     sort.cc \
@@ -27,5 +27,5 @@ LOCAL_SRC_FILES := \
 
 
 all:
-	g++ -c $(LOCAL_SRC_FILES) $(CFLAGS)
+	$(CC) -c $(LOCAL_SRC_FILES) $(CFLAGS)
 	ar -cru $(OUT_LIB) *.o

@@ -1,6 +1,6 @@
 include $(ROOT)/build.mk
 
-OUT_LIB := $(LIBS_DIR)/libwebrtc_spl.a
+OUT_LIB := $(DIST_LIB_DIR)/libwebrtc_spl.a
 LOCAL_SRC_FILES := \
     auto_corr_to_refl_coef.c \
     auto_correlation.c \
@@ -33,6 +33,7 @@ LOCAL_SRC_FILES := \
     splitting_filter.c \
     sqrt_of_one_minus_x_squared.c \
     vector_scaling_operations.c
+
 ifeq ($(ARCH_ARM_HAVE_ARMV7A),true)
 LOCAL_SRC_FILES += \
     filter_ar_fast_q12_armv7.S
@@ -53,5 +54,5 @@ endif
 
 
 all:
-	gcc -c $(LOCAL_SRC_FILES) $(CFLAGS)
+	$(C) -c $(LOCAL_SRC_FILES) $(CFLAGS)
 	ar -cru $(OUT_LIB) *.o

@@ -1,6 +1,6 @@
 include $(ROOT)/build.mk
 
-OUT_LIB := $(LIBS_DIR)/libwebrtc_apm_utility.a
+OUT_LIB := $(DIST_LIB_DIR)/libwebrtc_apm_utility.a
 LOCAL_SRC_FILES := \
     fft4g.c \
     ring_buffer.c \
@@ -9,5 +9,5 @@ LOCAL_SRC_FILES := \
 
 
 all:
-	gcc -c $(LOCAL_SRC_FILES) $(CFLAGS)
+	$(C) -c $(LOCAL_SRC_FILES) $(CFLAGS)
 	ar -cru $(OUT_LIB) *.o

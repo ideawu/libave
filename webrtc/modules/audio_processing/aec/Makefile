@@ -1,6 +1,6 @@
 include $(ROOT)/build.mk
 
-OUT_LIB := $(LIBS_DIR)/libwebrtc_aec.a
+OUT_LIB := $(DIST_LIB_DIR)/libwebrtc_aec.a
 LOCAL_SRC_FILES := \
     echo_cancellation.c \
     aec_resampler.c \
@@ -15,5 +15,5 @@ endif
 
 
 all:
-	gcc -c $(LOCAL_SRC_FILES) $(CFLAGS)
+	$(C) -c $(LOCAL_SRC_FILES) $(CFLAGS)
 	ar -cru $(OUT_LIB) *.o
