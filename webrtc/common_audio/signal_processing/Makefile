@@ -1,6 +1,6 @@
-include $(ROOT)/build.mk
+include $(ROOT)/config.mk
 
-OUT_LIB := $(DIST_LIB_DIR)/libwebrtc_spl.a
+LOCAL_MODULE := libwebrtc_spl.a
 LOCAL_SRC_FILES := \
     auto_corr_to_refl_coef.c \
     auto_correlation.c \
@@ -53,6 +53,5 @@ LOCAL_SRC_FILES += \
 endif
 
 
-all:
-	$(C) -c $(LOCAL_SRC_FILES) $(CFLAGS)
-	ar -cru $(OUT_LIB) *.o
+include $(ROOT)/build_library.mk
+

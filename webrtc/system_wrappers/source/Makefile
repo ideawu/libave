@@ -1,6 +1,6 @@
-include $(ROOT)/build.mk
+include $(ROOT)/config.mk
 
-OUT_LIB := $(DIST_LIB_DIR)/libwebrtc_system_wrappers.a
+LOCAL_MODULE := libwebrtc_system_wrappers.a
 LOCAL_SRC_FILES := \
     map.cc \
     sort.cc \
@@ -26,6 +26,5 @@ LOCAL_SRC_FILES := \
     rw_lock_posix.cc 
 
 
-all:
-	$(CC) -c $(LOCAL_SRC_FILES) $(CFLAGS)
-	ar -cru $(OUT_LIB) *.o
+include $(ROOT)/build_library.mk
+

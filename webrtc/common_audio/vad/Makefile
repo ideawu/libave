@@ -1,6 +1,6 @@
-include $(ROOT)/build.mk
+include $(ROOT)/config.mk
 
-OUT_LIB := $(DIST_LIB_DIR)/libwebrtc_vad.a
+LOCAL_MODULE := libwebrtc_vad.a
 LOCAL_SRC_FILES := \
     webrtc_vad.c \
     vad_core.c \
@@ -9,6 +9,5 @@ LOCAL_SRC_FILES := \
     vad_sp.c
 
 
-all:
-	$(C) -c $(LOCAL_SRC_FILES) $(CFLAGS)
-	ar -cru $(OUT_LIB) *.o
+include $(ROOT)/build_library.mk
+

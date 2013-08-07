@@ -1,6 +1,6 @@
-include $(ROOT)/build.mk
+include $(ROOT)/config.mk
 
-OUT_LIB := $(DIST_LIB_DIR)/libwebrtc_apm_utility.a
+LOCAL_MODULE := libwebrtc_apm_utility.a
 LOCAL_SRC_FILES := \
     fft4g.c \
     ring_buffer.c \
@@ -8,6 +8,5 @@ LOCAL_SRC_FILES := \
     delay_estimator_wrapper.c
 
 
-all:
-	$(C) -c $(LOCAL_SRC_FILES) $(CFLAGS)
-	ar -cru $(OUT_LIB) *.o
+include $(ROOT)/build_library.mk
+
