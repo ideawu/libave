@@ -64,7 +64,7 @@ int WebRtcVad_set_mode(VadInst* handle, int mode);
 //
 // - handle       [i/o] : VAD Instance. Needs to be initialized by
 //                        WebRtcVad_Init() before call.
-// - fs           [i]   : Sampling frequency (Hz): 8000, 16000, or 32000
+// - fs           [i]   : Sampling frequency (Hz): 8000, 16000, or 32000, 48000
 // - audio_frame  [i]   : Audio frame buffer.
 // - frame_length [i]   : Length of audio frame buffer in number of samples.
 //

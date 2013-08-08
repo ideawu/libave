@@ -13,6 +13,7 @@ LOCAL_SRC_FILES := \
     event_tracer.cc \
     file_impl.cc \
     list_no_stl.cc \
+	logging.cc \
     rw_lock.cc \
     thread.cc \
     trace_impl.cc \
