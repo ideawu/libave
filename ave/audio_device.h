@@ -13,13 +13,23 @@ public:
 
 class AudioDevice
 {
-	//create();
-	//list_input_devices(std::vector<std::string> *devices);
-	//list_output_devices(std::vector<std::string> *devices);
-	//init_recorder, callback record(samples)
-	//init_player, automatically start when first play(samples)
-	//start_recorder
-	//stop_recorder
+public:
+	// AudioDevice methods
+	static AudioDevice* create();
+	
+	virtual int set_callback(AudioDeviceCallback *callback) = 0;
+	
+	virtual int init_input_device(int id, int sample_rate_hz) = 0;
+	virtual int init_output_device(int id, int sample_rate_hz, int channels) = 0;
+	
+	virtual int start_record() = 0;
+	virtual int stop_record() = 0;
+	
+	virtual int start_playout() = 0;
+	virtual int stop_playout() = 0;
+
+	//playout automatically startup
+	virtual int play(const int16_t *samples, int size) = 0;
 };
 
 }; // namespace ave

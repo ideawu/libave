@@ -40,7 +40,7 @@ AudioDeviceImpl::~AudioDeviceImpl(){
 	}
 }
 
-AudioDeviceImpl* AudioDeviceImpl::create(){
+AudioDevice* AudioDevice::create(){
 	int ret;
 	AudioDeviceImpl *impl = new AudioDeviceImpl();
 	
@@ -218,6 +218,7 @@ int AudioDeviceImpl::play(const int16_t *samples, int size){
 	int nbytes = size * sizeof(int16_t) * this->output_channels_;
 	//log_trace("play samples: %d, nbytes: %d", size, nbytes);
 	memcpy(out, samples, nbytes);
+	// TODO: lock
 	output_buffer->push_back();
 	
 	if(!audio->Playing()){
@@ -272,7 +273,8 @@ int32_t AudioDeviceImpl::RecordedDataIsAvailable(
 			tmp,
 	     	MAX_SAMPLES_PER_10MS,
 			out_len);
-		if(out_len != this->input_samples_per_10ms){
+		if(ret != 0 || out_len != this->input_samples_per_10ms){
+			log_error("resample error!");
 			return -1;
 		}
 		samples = tmp;
@@ -292,6 +294,7 @@ int32_t AudioDeviceImpl::NeedMorePlayData(
 	void* audioSamples,
 	uint32_t& nSamplesOut)
 {
+	// TODO: lock
 	int16_t *samples = (int16_t *)output_buffer->pop_front();
 	if(samples == NULL){
 		// silence
@@ -311,6 +314,10 @@ int32_t AudioDeviceImpl::NeedMorePlayData(
 			tmp,
 	     	MAX_SAMPLES_PER_10MS,
 			num_samples);
+		if(ret != 0){
+			log_error("resample error!");
+			return -1;
+		}
 		samples = tmp;
 	}
 	

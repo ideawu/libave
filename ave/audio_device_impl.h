@@ -17,6 +17,8 @@ class AudioDeviceImpl : public AudioDevice
 	, public webrtc::AudioTransport
 {
 private:
+	friend class AudioDevice;
+
 	// 2 channels
 	static const int MAX_SAMPLES_PER_10MS = 2 * 48000/100;
 
@@ -45,8 +47,6 @@ private:
 
 public:
 	// AudioDevice methods
-	static AudioDeviceImpl* create();
-	
 	virtual int set_callback(AudioDeviceCallback *callback);
 	
 	virtual int init_input_device(int id, int sample_rate_hz);
