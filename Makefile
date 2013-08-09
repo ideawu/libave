@@ -6,6 +6,9 @@ ROOT = $(shell pwd)
 .PHONY: test dist ave
 
 all:
+	mkdir -p $(DIST_LIB_DIR)
+	mkdir -p $(DIST_OBJ_DIR)
+	mkdir -p $(DIST_INC_DIR)
 	cd webrtc/modules/audio_device; make ROOT=$(ROOT)
 	cd webrtc/system_wrappers/source; make ROOT=$(ROOT)
 	cd webrtc/common_audio/signal_processing; make ROOT=$(ROOT)
@@ -29,7 +32,8 @@ test:
 	cd test; make ROOT=$(ROOT)
 
 dist:
-	#ar -cru $(DIST_LIB_DIR)/libave.a $(DIST_OBJ_DIR)/*.o
+	ar -cru $(DIST_LIB_DIR)/libave.a $(DIST_OBJ_DIR)/*.o
+	cp ave/audio_device.h $(DIST_INC_DIR)
 
 clean:
 	rm -f dist/lib/* dist/obj/* dist/include/*

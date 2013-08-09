@@ -6,7 +6,8 @@ CLIBS += \
 	-framework CoreAudio
 
 all:
-	$(CC) -c audio_device_impl.cpp $(CFLAGS)
+	$(CC) -o ave_audio_device_impl.o  -c audio_device_impl.cpp $(CFLAGS)
+	cp *.o $(DIST_OBJ_DIR)
 
 	
 	

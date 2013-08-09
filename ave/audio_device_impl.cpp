@@ -353,9 +353,6 @@ int32_t AudioDeviceImpl::NeedMorePlayData(
 	}
 	
 	return 0;
-err:
-	nSamplesOut = 0;
-	return 0;
 }
 
 }; // namespace ave

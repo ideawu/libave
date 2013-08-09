@@ -1,6 +1,8 @@
 #ifndef AVE_AUDIO_DEVICE_H
 #define AVE_AUDIO_DEVICE_H
 
+#include<inttypes.h>
+
 namespace ave{
 
 class AudioDeviceCallback
