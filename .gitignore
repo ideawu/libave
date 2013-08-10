@@ -4,5 +4,6 @@
 *.out
 *.exe
 dist/*
+config.mk
 
 

@@ -1,3 +1,4 @@
+$(sh build.sh > config.mk)
 include config.mk
 
 CFLAGS = -I . -I ./webrtc
