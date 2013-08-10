@@ -3,5 +3,6 @@
 *.o
 *.out
 *.exe
+dist/*
 
 

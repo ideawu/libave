@@ -18,4 +18,5 @@ all:
 	$(build_cc)
 	ar -cru $(DIST_LIB_DIR)/$(LOCAL_MODULE) *.o
 	cp *.o $(DIST_OBJ_DIR)
+	echo
 

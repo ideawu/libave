@@ -208,6 +208,10 @@ int AudioDeviceImpl::stop_playout(){
 }
 
 int AudioDeviceImpl::play(const int16_t *samples, int size){
+	if(size != this->output_samples_per_10ms){
+		return -1;
+	}
+	
 	int16_t *out = (int16_t *)output_buffer->space();
 	if(out == NULL){
 		log_trace("drop oldest recorded frame");
@@ -298,7 +302,7 @@ int32_t AudioDeviceImpl::NeedMorePlayData(
 	int16_t *samples = (int16_t *)output_buffer->pop_front();
 	if(samples == NULL){
 		// silence
-		log_trace("no data for playout");
+		//log_trace("no data for playout");
 		memset(audioSamples, 0, nSamples * nBytesPerSample);
 		nSamplesOut = nSamples;
 		return -1;

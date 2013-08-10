@@ -20,12 +20,11 @@ all:
 	cd webrtc/modules/audio_processing/ns; make ROOT=$(ROOT)
 	#cd webrtc/modules/audio_processing/aecm; make ROOT=$(ROOT)
 	#cd webrtc/modules/audio_processing; make ROOT=$(ROOT)
+	cd ave; make ROOT=$(ROOT)
 	make dist
 
 a:
 
-ave:
-	cd ave; make ROOT=$(ROOT)
 
 test:
 	make ave
@@ -36,4 +35,4 @@ dist:
 	cp ave/audio_device.h $(DIST_INC_DIR)
 
 clean:
-	rm -f dist/lib/* dist/obj/* dist/include/*
+	rm -rf dist/lib/* dist/obj/* dist/include/*
